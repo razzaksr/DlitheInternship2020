@@ -4,14 +4,35 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.springframework.lang.Nullable;
 
 @Entity
 public class Candidates implements Serializable
 {
 	@Id
+	@Digits(fraction=0,integer=12)
 	private Long regno;
+	@Digits(fraction=0,integer=12)
 	private Long mobile;
-	private String name,department,skills,certifications,career,status,email;
+	@Pattern(regexp="[^0-9]*")
+	private String name;
+	@NotNull
+	private String department;
+	@NotNull
+	private String skills;
+	@NotNull
+	private String certifications;
+	@NotNull
+	private String career;
+	@Nullable
+	private String status;
+	@NotNull
+	private String email;
 	private Double cgpa,hsc,diploma,sslc;
 	public Long getRegno() {
 		return regno;

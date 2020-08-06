@@ -7,6 +7,8 @@
 <title>Sample PAge</title>
 </head>
 <body>
-<h1>Welcome to Dlithe Intership 2020</h1>
+<h1>Welcome to Dlithe Internship 2020</h1>
+<h2>${ mob}</h2>
+<h3>${user }</h3>
 </body>
 </html>
