@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class CampusController 
 {
 	@Autowired
-	CampusRepo repo;
+	CampService camp;
 	@RequestMapping("/begin")
 	public ModelAndView initiate()
 	{
@@ -37,7 +37,7 @@ public class CampusController
 	public ModelAndView enrolled(@Valid Candidates candidates, BindingResult res)
 	{
 		if(res.hasErrors()) {return new ModelAndView("enroll"); }
-		repo.save(candidates);
+		camp.insert(candidates);
 		return new ModelAndView("enroll").addObject("msg", "Candidates Enrolled");
 	}
 }
