@@ -1,5 +1,7 @@
 package dlithe.internship.CampusConnect;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +41,11 @@ public class CampusController
 		if(res.hasErrors()) {return new ModelAndView("enroll"); }
 		camp.insert(candidates);
 		return new ModelAndView("enroll").addObject("msg", "Candidates Enrolled");
+	}
+	@RequestMapping("/list")
+	public ModelAndView display()
+	{
+		List<Candidates> temp=camp.showAll();
+		return new ModelAndView("show").addObject("every", temp);
 	}
 }

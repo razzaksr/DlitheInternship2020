@@ -1,5 +1,7 @@
 package dlithe.internship.CampusConnect;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,5 +13,9 @@ public class CampService
 	public Candidates insert(Candidates candidates)
 	{
 		return repo.save(candidates);
+	}
+	public List<Candidates> showAll()
+	{
+		return repo.findAll();
 	}
 }
