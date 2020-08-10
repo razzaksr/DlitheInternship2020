@@ -18,4 +18,18 @@ public class CampService
 	{
 		return repo.findAll();
 	}
+	public Candidates readOne(Long regno)
+	{
+		return repo.getOne(regno);
+	}
+	public Candidates change(Candidates candidates)
+	{
+		return repo.save(candidates);
+	}
+	public String erase(Long regno)
+	{
+		Candidates can=repo.getOne(regno);
+		repo.delete(can);
+		return can.getName();
+	}
 }

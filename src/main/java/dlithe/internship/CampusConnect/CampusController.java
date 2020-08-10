@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -47,5 +48,16 @@ public class CampusController
 	{
 		List<Candidates> temp=camp.showAll();
 		return new ModelAndView("show").addObject("every", temp);
+	}
+	@RequestMapping("/update")
+	public ModelAndView info(@RequestParam("reg") Long reg)
+	{
+		return new ModelAndView("letting").addObject("fetched", camp.readOne(reg));
+	}
+	@RequestMapping(value="/alter",method=RequestMethod.POST)
+	public ModelAndView alter(Candidates candidates)
+	{
+		camp.change(candidates);
+		return display().addObject("msg", candidates.getName()+" Updated SuccessFully");
 	}
 }

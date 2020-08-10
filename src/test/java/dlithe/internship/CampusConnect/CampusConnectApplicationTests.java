@@ -91,4 +91,22 @@ class CampusConnectApplicationTests {
 		when(repo.findAll()).thenReturn(hai);
 		assertFalse(service.showAll().get(1).getCareer().equals("Core"));
 	}
+	@Test
+	public void readTest()
+	{
+		Candidates can=new Candidates
+				(111112222111L,8667002959L,"Razak","Electronics","Android","Nill","IT","Not Placed","razzaksr@gmail.com",9.1,8.1,0.0,9.1);
+		when(repo.getOne(111112222111L)).thenReturn(can);
+		assertNotNull(service.readOne(111112222111L));
+	}
+	@Test
+	public void updateTest()
+	{
+		Candidates cand=new Candidates
+				(876788778722L,9677520692L,"Richard","Computers","Java","Nill","IT","Not Placed","razzaksr@gmail.com",9.1,8.1,0.0,9.1);
+		Candidates can=new Candidates
+				(111112222111L,8667002959L,"Razak","Electronics","Android","Nill","IT","Not Placed","razzaksr@gmail.com",9.1,8.1,0.0,9.1);
+		when(repo.save(can)).thenReturn(can);
+		assertEquals(can,service.change(can));
+	}
 }
