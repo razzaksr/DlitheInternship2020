@@ -26,10 +26,10 @@ public class CampService
 	{
 		return repo.save(candidates);
 	}
-	public String erase(Long regno)
+	public String erase(Candidates candidates)
 	{
-		Candidates can=repo.getOne(regno);
-		repo.delete(can);
-		return can.getName();
+		String get=candidates.getName();
+		repo.delete(candidates);
+		return get;
 	}
 }

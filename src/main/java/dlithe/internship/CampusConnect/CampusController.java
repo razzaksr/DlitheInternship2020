@@ -60,4 +60,11 @@ public class CampusController
 		camp.change(candidates);
 		return display().addObject("msg", candidates.getName()+" Updated SuccessFully");
 	}
+	@RequestMapping("/remove")
+	public ModelAndView flush(@RequestParam("reg") Long reg)
+	{
+		Candidates can=camp.readOne(reg);
+		String got=camp.erase(can);
+		return display().addObject("msg", got+" Deleted Successfully");
+	}
 }

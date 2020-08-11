@@ -1,0 +1,30 @@
+SQL
+based on mysql table and database
+table names and fields
+
+
+Hibernate Query Language:
+since its ORM, it'll deal with entity classes
+Class name, properties/members
+Custom Queries via methods
+
+built in methods:
+delete
+getOne/findById
+save
+delete
+
+Custom methods:
+@Query("hql :data")
+
+
+
+example SQL fetch by department:
+select * from candidates where department=?
+example SQL fetch by department with specific columns:
+select skills from candidates where department=?
+
+example HQL fetch by department:
+from Candidates where department=:department
+example HQL fetch by department specific attributes:
+Select skills from Candidates where department=:department

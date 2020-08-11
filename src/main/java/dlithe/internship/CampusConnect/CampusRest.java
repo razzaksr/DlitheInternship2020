@@ -3,6 +3,7 @@ package dlithe.internship.CampusConnect;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -33,5 +34,10 @@ public class CampusRest
 	public Candidates modify(@RequestBody Candidates candidates)
 	{
 		return service.change(candidates);
+	}
+	@DeleteMapping("/del")
+	public String clean(@RequestBody Candidates candidates)
+	{
+		return service.erase(candidates);
 	}
 }
