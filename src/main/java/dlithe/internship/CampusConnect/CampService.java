@@ -32,4 +32,16 @@ public class CampService
 		repo.delete(candidates);
 		return get;
 	}
+	public List<Candidates> fetchViaDepartment(String dept)
+	{
+		return repo.getByDepartment(dept);
+	}
+	public List<Candidates> fetchViaCareer(String career)
+	{
+		return repo.getByCareer(career);
+	}
+	public List<Candidates> fetchViaStatus(String status)
+	{
+		return repo.getByStatus(status);
+	}
 }

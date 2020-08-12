@@ -1,6 +1,7 @@
 package dlithe.internship.CampusConnect;
 
 import java.util.List;
+import java.util.Vector;
 
 import javax.validation.Valid;
 
@@ -17,6 +18,7 @@ public class CampusController
 {
 	@Autowired
 	CampService camp;
+	List<Candidates> temp;
 	@RequestMapping("/begin")
 	public ModelAndView initiate()
 	{
@@ -46,7 +48,7 @@ public class CampusController
 	@RequestMapping("/list")
 	public ModelAndView display()
 	{
-		List<Candidates> temp=camp.showAll();
+		temp=camp.showAll();
 		return new ModelAndView("show").addObject("every", temp);
 	}
 	@RequestMapping("/update")
@@ -66,5 +68,34 @@ public class CampusController
 		Candidates can=camp.readOne(reg);
 		String got=camp.erase(can);
 		return display().addObject("msg", got+" Deleted Successfully");
+	}
+	@RequestMapping("/find")
+	public ModelAndView search()
+	{
+		return new ModelAndView("search");
+	}
+	@RequestMapping(value="/fetch",method=RequestMethod.POST)
+	public ModelAndView reads(@RequestParam("regno") String regno,@RequestParam("department") String department,@RequestParam("career") String career,@RequestParam("status") String status)
+	{
+		temp=new Vector<Candidates>();
+		if(!regno.equals("")&&department.equals("Select Any Department")&&career.equals("Select Any Career")&&status.equals("Select Any Status"))
+		{
+			Candidates tmp=camp.readOne(Long.parseLong(regno));
+			temp.add(tmp);
+		}
+		else if(regno.equals("")&&!department.equals("Select Any Department")&&career.equals("Select Any Career")&&status.equals("Select Any Status"))
+		{
+			temp=camp.fetchViaDepartment(department);
+			//camp.fetchViaDepartment(department).forEach(temp::add);
+		}
+		else if(regno.equals("")&&department.equals("Select Any Department")&&!career.equals("Select Any Career")&&status.equals("Select Any Status"))
+		{
+			temp=camp.fetchViaCareer(career);
+		}
+		else if(regno.equals("")&&department.equals("Select Any Department")&&career.equals("Select Any Career")&&!status.equals("Select Any Status"))
+		{
+			temp=camp.fetchViaStatus(status);
+		}
+		return new ModelAndView("show").addObject("every", temp);
 	}
 }

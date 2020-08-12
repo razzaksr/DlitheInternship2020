@@ -1,10 +1,12 @@
 package dlithe.internship.CampusConnect;
 
 import java.util.List;
+import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,5 +41,27 @@ public class CampusRest
 	public String clean(@RequestBody Candidates candidates)
 	{
 		return service.erase(candidates);
+	}
+	@GetMapping("/fetch/{constrain}/{data}")// /fetch/department/Computers
+	public List<Candidates> find(@PathVariable("constrain") String constrain,@PathVariable("data") String data)
+	{
+		List<Candidates> temp=new Vector<Candidates>();
+		if(constrain.equalsIgnoreCase("regno"))
+		{
+			temp.add(service.readOne(Long.parseLong(data)));
+		}
+		else if(constrain.equalsIgnoreCase("department"))
+		{
+			temp=service.fetchViaDepartment(data);
+		}
+		else if(constrain.equalsIgnoreCase("career"))
+		{
+			temp=service.fetchViaCareer(data);
+		}
+		else if(constrain.equalsIgnoreCase("status"))
+		{
+			temp=service.fetchViaStatus(data);
+		}
+		return temp;
 	}
 }
