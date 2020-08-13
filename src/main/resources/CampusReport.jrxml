@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CampusReport" pageWidth="1600" pageHeight="900" orientation="Landscape" columnWidth="1560" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a5c9b49-9dc5-422a-ac69-e92cf61ef530">
+	<field name="regno" class="java.lang.Long">
+		
+	</field>
+	<field name="name" class="java.lang.String">
+		
+	</field>
+	<field name="department" class="java.lang.String">
+		
+	</field>
+	<field name="cgpa" class="java.lang.Double">
+		
+	</field>
+	<field name="hsc" class="java.lang.Double">
+		
+	</field>
+	<field name="diploma" class="java.lang.Double">
+		
+	</field>
+	<field name="sslc" class="java.lang.Double">
+		
+	</field>
+	<field name="skills" class="java.lang.String">
+		
+	</field>
+	<field name="certifications" class="java.lang.String">
+		
+	</field>
+	<field name="mobile" class="java.lang.Long">
+		
+	</field>
+	<field name="email" class="java.lang.String">
+		
+	</field>
+	<field name="career" class="java.lang.String">
+		
+	</field>
+	<field name="status" class="java.lang.String">
+		
+	</field>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{regno}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="3" width="1470" height="24" forecolor="#B89F7D" backcolor="#000000" uuid="f24569ed-2518-465a-a480-0c195aacd180"/>
+					<staticText>
+						<reportElement x="8" y="4" width="100" height="20" forecolor="#FFFFFF" uuid="734d25dc-7430-49e0-94f4-7df689f0d102"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[Registration Number]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="123" y="4" width="116" height="20" forecolor="#FFFFFF" uuid="0160925f-63c3-4ec6-bf28-cd780108232d"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[Name]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="259" y="4" width="115" height="20" forecolor="#FFFFFF" uuid="85313a61-93c8-487c-9186-af8af01a6f1a"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[Department]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="395" y="3" width="59" height="20" forecolor="#FFFFFF" uuid="ffb5e5fb-ee59-4463-a695-63b483f6c9bd"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[CGPA]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="467" y="3" width="59" height="20" forecolor="#FFFFFF" uuid="c6af665f-5ce3-4b00-9fdb-49457b94ad82"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[HSC]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="540" y="3" width="59" height="20" forecolor="#FFFFFF" uuid="3f2b0c31-4839-4f90-9a80-9bc671ba394e"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[Diploma]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="614" y="3" width="47" height="20" forecolor="#FFFFFF" uuid="2acacbf0-69bf-4f20-9021-683fe609087b"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[SSLC]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="668" y="3" width="122" height="20" forecolor="#FFFFFF" uuid="c9f377ca-9c8f-4a42-a117-0fca8e84cbaa"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[Skill sets]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="800" y="3" width="105" height="20" forecolor="#FFFFFF" uuid="d1f89a6a-acb7-4c3b-b65b-e15b76ae1d94"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[Certifications]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="920" y="4" width="101" height="20" forecolor="#FFFFFF" uuid="e3b1186e-6117-403e-bd11-29b6011af917"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[Desired Career]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="1040" y="2" width="151" height="20" forecolor="#FFFFFF" uuid="81bf81d2-9402-4826-9d8a-fa5df7800d29"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[Mobile Number]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="1200" y="0" width="160" height="20" forecolor="#FFFFFF" uuid="8a413507-13d5-4741-93a2-c0d97fccaaa2"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[Email]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="1380" y="0" width="77" height="20" forecolor="#FFFFFF" uuid="c333ac1e-ed25-4d33-a468-28345726d08d"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[Status]]></text>
+					</staticText>
+				</frame>
+				<rectangle>
+					<reportElement x="1480" y="0" width="77" height="24" backcolor="#666666" uuid="70e1e931-2edd-4f3d-b09b-b9da04709f25"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[$F{name}]]></groupExpression>
+		<groupHeader>
+			<band height="27"/>
+		</groupHeader>
+	</group>
+	<group name="department">
+		<groupExpression><![CDATA[$F{department}]]></groupExpression>
+	</group>
+	<group name="cgpa">
+		<groupExpression><![CDATA[$F{cgpa}]]></groupExpression>
+	</group>
+	<group name="hsc">
+		<groupExpression><![CDATA[$F{hsc}]]></groupExpression>
+	</group>
+	<group name="diploma">
+		<groupExpression><![CDATA[$F{diploma}]]></groupExpression>
+	</group>
+	<group name="sslc">
+		<groupExpression><![CDATA[$F{sslc}]]></groupExpression>
+	</group>
+	<group name="skills">
+		<groupExpression><![CDATA[$F{skills}]]></groupExpression>
+	</group>
+	<group name="certifications">
+		<groupExpression><![CDATA[$F{certifications}]]></groupExpression>
+	</group>
+	<group name="mobile">
+		<groupExpression><![CDATA[$F{mobile}]]></groupExpression>
+	</group>
+	<group name="email">
+		<groupExpression><![CDATA[$F{email}]]></groupExpression>
+	</group>
+	<group name="career">
+		<groupExpression><![CDATA[$F{career}]]></groupExpression>
+	</group>
+	<group name="status">
+		<groupExpression><![CDATA[$F{status}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<image>
+				<reportElement x="1480" y="0" width="77" height="102" uuid="651ccc4b-e999-40fe-bcbf-1f25bcfc98af"/>
+				<imageExpression><![CDATA["cherry.jpg"]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="1470" height="66" backcolor="#000000" uuid="d8d9e644-3a32-491d-97cb-a277aff17133"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="530" height="66" uuid="27d8f6ee-f0a9-44f6-a160-1763c3b00f30"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[DLithe Report]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="1150" y="37" width="316" height="29" uuid="cfa21334-0634-4605-9ea7-aca4981f67e4"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Report of candidates]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="1470" height="32" forecolor="#000000" backcolor="#CC0000" uuid="b0c895f6-6dbd-477d-9858-9ad66af087e1"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="1300" y="6" width="144" height="20" forecolor="#FFFFFF" uuid="a33fce3b-20c1-4696-873a-fe134d1e7d88"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="390" y="0" width="59" height="20" uuid="a7ffb9e9-16a6-4674-b91d-f219a1b9f50a"/>
+				<textFieldExpression><![CDATA[$F{cgpa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="920" y="1" width="77" height="20" uuid="14763add-ad51-41c3-8189-8efc407406a0"/>
+				<textFieldExpression><![CDATA[$F{career}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="800" y="0" width="84" height="20" uuid="2c4033b7-4cae-4509-84f9-155f982ffcc6"/>
+				<textFieldExpression><![CDATA[$F{certifications}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="467" y="0" width="59" height="20" uuid="fda97f14-0662-4b6b-883a-311611ed9193"/>
+				<textFieldExpression><![CDATA[$F{hsc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1040" y="0" width="130" height="20" uuid="62c19137-88a1-4f42-90cd-b3ff6a14b9f6"/>
+				<textFieldExpression><![CDATA[$F{mobile}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="0" width="116" height="20" uuid="78e7473f-483c-4231-b55d-2ade4ccf8b2c"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="259" y="0" width="125" height="20" uuid="bcae0154-7947-446b-bb89-2eea8032e160"/>
+				<textFieldExpression><![CDATA[$F{department}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="610" y="0" width="47" height="20" uuid="aeca843c-3ec0-4e9a-8a6c-a285eb41654f"/>
+				<textFieldExpression><![CDATA[$F{sslc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="540" y="0" width="59" height="20" uuid="e22d8fdc-7697-47fe-a530-af18eb9f515c"/>
+				<textFieldExpression><![CDATA[$F{diploma}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1191" y="0" width="142" height="20" uuid="0801fe5a-ee7f-46e2-a0db-1dbe277edfe5"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1380" y="0" width="76" height="20" uuid="93f07e51-0a09-4cf6-94e3-0951c7d06f8d"/>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="670" y="1" width="67" height="20" uuid="686fbd46-0af9-4579-9207-8b50f3aac16f"/>
+				<textFieldExpression><![CDATA[$F{skills}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="0" width="106" height="20" uuid="5547192d-3b5a-42aa-a443-d233215cca56"/>
+				<textFieldExpression><![CDATA[$F{regno}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="501ac6c4-e9d4-43cb-ba6b-7f2f44394cf3"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="1557" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="ffb10ec8-0371-4545-8eaa-96d62ad3cec0"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="b5521ea6-5f36-4864-856f-58d0bcd011f2"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="e625ea3c-1741-4cfe-81cf-fbbdd00162c8"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="0c9f7e91-d3f5-47f9-82b7-0b2b3a43a5d6"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

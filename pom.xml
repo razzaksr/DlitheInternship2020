@@ -26,6 +26,12 @@
 		</dependency>
 		
 		<dependency>
+		    <groupId>net.sf.jasperreports</groupId>
+		    <artifactId>jasperreports</artifactId>
+		    <version>6.13.0</version>
+		</dependency>
+		
+		<dependency>
 		    <groupId>org.apache.tomcat.embed</groupId>
 		    <artifactId>tomcat-embed-jasper</artifactId>
 		    <version>9.0.36</version>
@@ -68,8 +74,7 @@
 		    <groupId>com.fasterxml.jackson.dataformat</groupId>
 		    <artifactId>jackson-dataformat-xml</artifactId>
 		    <version>2.11.2</version>
-		</dependency>
-				
+		</dependency>				
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
