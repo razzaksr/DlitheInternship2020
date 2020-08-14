@@ -61,6 +61,7 @@ public class CampService
 	public String generate(List<Candidates> can,String format)
 	{
 		File fgen=null;
+        String hai="";
 		try
 		{
 			File file = ResourceUtils.getFile("classpath:CampusReport.jrxml");
@@ -69,6 +70,7 @@ public class CampService
 	        Map<String, Object> parameters = new HashMap<>();
 	        parameters.put("createdBy", "Arun Rajpurohit");
 	        parameters.put("createdFor", "DLithe Consultancy Services");
+	        System.out.println("Received @ report end before writing "+can);
 	        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
 	        if (format.equalsIgnoreCase("html")) {
 	        	fgen=new File("dlithe.html");
@@ -78,6 +80,8 @@ public class CampService
 	        	fgen=new File("dlithe.pdf");
 	            JasperExportManager.exportReportToPdfFile(jasperPrint, fgen.getAbsolutePath());
 	        }
+	        hai="Report generated @ "+fgen.getAbsolutePath();
+	        System.out.println("Received @ report end after writing "+can);
 		}
 		catch(JRException j)
 		{j.printStackTrace();} 
@@ -85,7 +89,6 @@ public class CampService
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String hai="Report generated @ "+fgen.getAbsolutePath();
 		return hai;
 	}
 }

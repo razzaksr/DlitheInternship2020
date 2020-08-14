@@ -26,5 +26,7 @@ ${msg }
 </tr>
 </hai:forEach>
 </table>
+<h3><a href="report?form=pdf">Generate As PDF</a></h3>
+<h3><a href="report?form=html">Generate As HTML</a></h3>
 </body>
 </html>

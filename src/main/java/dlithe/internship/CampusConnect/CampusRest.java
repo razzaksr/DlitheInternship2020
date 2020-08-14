@@ -64,4 +64,26 @@ public class CampusRest
 		}
 		return temp;
 	}
+	@GetMapping("/fetch/{constrain}/{data}/report/{format}")// /fetch/department/Computers/report/pdf
+	public String finding(@PathVariable("constrain") String constrain,@PathVariable("data") String data,@PathVariable("format") String format)
+	{
+		List<Candidates> temp=new Vector<Candidates>();
+		if(constrain.equalsIgnoreCase("regno"))
+		{
+			temp.add(service.readOne(Long.parseLong(data)));
+		}
+		else if(constrain.equalsIgnoreCase("department"))
+		{
+			temp=service.fetchViaDepartment(data);
+		}
+		else if(constrain.equalsIgnoreCase("career"))
+		{
+			temp=service.fetchViaCareer(data);
+		}
+		else if(constrain.equalsIgnoreCase("status"))
+		{
+			temp=service.fetchViaStatus(data);
+		}
+		return service.generate(temp, format);
+	}
 }

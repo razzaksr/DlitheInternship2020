@@ -33,6 +33,20 @@ public class CampusController
 	{
 		return new ModelAndView("second");
 	}
+	@RequestMapping("/")
+	public ModelAndView login()
+	{
+		return new ModelAndView("index");
+	}
+	@RequestMapping(value="/log",method=RequestMethod.POST)
+	public ModelAndView home(@RequestParam("user") String user, @RequestParam("pass") String pass)
+	{
+		if(user.equalsIgnoreCase("dlithe")&&pass.equalsIgnoreCase("bangalore"))
+		{
+			return new ModelAndView("home");
+		}
+		else {return new ModelAndView("index").addObject("msg", "Invalid Credentials");}
+	}
 	@RequestMapping("/add")
 	public ModelAndView askEnroll()
 	{
@@ -97,5 +111,16 @@ public class CampusController
 			temp=camp.fetchViaStatus(status);
 		}
 		return new ModelAndView("show").addObject("every", temp);
+	}
+	@RequestMapping("/report")
+	public ModelAndView rep(@RequestParam("form") String form)
+	{
+		ModelAndView mod=new ModelAndView("show");
+		System.out.println("Before report calls"+temp);
+		String get=camp.generate(temp, form);
+		mod.addObject("every", temp);
+		mod.addObject("msg", get);
+		System.out.println("Done in report navigate back to show with "+temp);
+		return mod;
 	}
 }
