@@ -11,7 +11,7 @@ ${msg }
 <form action="log" method="post">
 <table>
 <tr><td>Enter the User name</td>
-<td><input type="text" name="user" plcaholder="Username"></td></tr>
+<td><input type="text" name="user" placeholder="Username"></td></tr>
 <tr><td>Enter the PAssword</td>
 <td><input type="password" name="pass" placeholder="Password"></td>
 </tr>

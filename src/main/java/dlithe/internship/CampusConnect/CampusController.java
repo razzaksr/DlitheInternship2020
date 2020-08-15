@@ -3,6 +3,8 @@ package dlithe.internship.CampusConnect;
 import java.util.List;
 import java.util.Vector;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ public class CampusController
 	@Autowired
 	CampService camp;
 	List<Candidates> temp;
+	HttpSession session;
 	@RequestMapping("/begin")
 	public ModelAndView initiate()
 	{
@@ -39,10 +42,12 @@ public class CampusController
 		return new ModelAndView("index");
 	}
 	@RequestMapping(value="/log",method=RequestMethod.POST)
-	public ModelAndView home(@RequestParam("user") String user, @RequestParam("pass") String pass)
+	public ModelAndView home(@RequestParam("user") String user, @RequestParam("pass") String pass, HttpServletRequest request)
 	{
 		if(user.equalsIgnoreCase("dlithe")&&pass.equalsIgnoreCase("bangalore"))
 		{
+			session=request.getSession();
+			session.setAttribute("user", user);
 			return new ModelAndView("home");
 		}
 		else {return new ModelAndView("index").addObject("msg", "Invalid Credentials");}
@@ -50,77 +55,120 @@ public class CampusController
 	@RequestMapping("/add")
 	public ModelAndView askEnroll()
 	{
-		return new ModelAndView("enroll");
+		if(session.getAttribute("user")!=null) {return new ModelAndView("enroll");}
+		else {return new ModelAndView("index");}
 	}
 	@RequestMapping(value="/added",method=RequestMethod.POST)
 	public ModelAndView enrolled(@Valid Candidates candidates, BindingResult res)
 	{
-		if(res.hasErrors()) {return new ModelAndView("enroll"); }
-		camp.insert(candidates);
-		return new ModelAndView("enroll").addObject("msg", "Candidates Enrolled");
+		if(session.getAttribute("user")!=null)
+		{
+			if(res.hasErrors()) {return new ModelAndView("enroll"); }
+			camp.insert(candidates);
+			return new ModelAndView("enroll").addObject("msg", "Candidates Enrolled");
+		}
+		else {return new ModelAndView("index");}
 	}
 	@RequestMapping("/list")
 	public ModelAndView display()
 	{
-		temp=camp.showAll();
-		return new ModelAndView("show").addObject("every", temp);
+		if(session.getAttribute("user")!=null) 
+		{
+			temp=camp.showAll();
+			return new ModelAndView("show").addObject("every", temp);
+		}
+		else {return new ModelAndView("index");}
 	}
 	@RequestMapping("/update")
 	public ModelAndView info(@RequestParam("reg") Long reg)
 	{
-		return new ModelAndView("letting").addObject("fetched", camp.readOne(reg));
+		if(session.getAttribute("user")!=null) {return new ModelAndView("letting").addObject("fetched", camp.readOne(reg));}
+		else {return new ModelAndView("index");}
 	}
 	@RequestMapping(value="/alter",method=RequestMethod.POST)
 	public ModelAndView alter(Candidates candidates)
 	{
-		camp.change(candidates);
-		return display().addObject("msg", candidates.getName()+" Updated SuccessFully");
+		if(session.getAttribute("user")!=null)
+		{
+			camp.change(candidates);
+			return display().addObject("msg", candidates.getName()+" Updated SuccessFully");
+		}
+		else {return new ModelAndView("index");}
 	}
 	@RequestMapping("/remove")
 	public ModelAndView flush(@RequestParam("reg") Long reg)
 	{
-		Candidates can=camp.readOne(reg);
-		String got=camp.erase(can);
-		return display().addObject("msg", got+" Deleted Successfully");
+		if(session.getAttribute("user")!=null)
+		{
+			Candidates can=camp.readOne(reg);
+			String got=camp.erase(can);
+			return display().addObject("msg", got+" Deleted Successfully");
+		}
+		else {return new ModelAndView("index");}
 	}
 	@RequestMapping("/find")
 	public ModelAndView search()
 	{
-		return new ModelAndView("search");
+		if(session.getAttribute("user")!=null) {return new ModelAndView("search");}
+		else {return new ModelAndView("index");}
 	}
 	@RequestMapping(value="/fetch",method=RequestMethod.POST)
 	public ModelAndView reads(@RequestParam("regno") String regno,@RequestParam("department") String department,@RequestParam("career") String career,@RequestParam("status") String status)
 	{
-		temp=new Vector<Candidates>();
-		if(!regno.equals("")&&department.equals("Select Any Department")&&career.equals("Select Any Career")&&status.equals("Select Any Status"))
+		if(session.getAttribute("user")!=null)
 		{
-			Candidates tmp=camp.readOne(Long.parseLong(regno));
-			temp.add(tmp);
+			temp=new Vector<Candidates>();
+			if(!regno.equals("")&&department.equals("Select Any Department")&&career.equals("Select Any Career")&&status.equals("Select Any Status"))
+			{
+				Candidates tmp=camp.readOne(Long.parseLong(regno));
+				temp.add(tmp);
+			}
+			else if(regno.equals("")&&!department.equals("Select Any Department")&&career.equals("Select Any Career")&&status.equals("Select Any Status"))
+			{
+				temp=camp.fetchViaDepartment(department);
+				//camp.fetchViaDepartment(department).forEach(temp::add);
+			}
+			else if(regno.equals("")&&department.equals("Select Any Department")&&!career.equals("Select Any Career")&&status.equals("Select Any Status"))
+			{
+				temp=camp.fetchViaCareer(career);
+			}
+			else if(regno.equals("")&&department.equals("Select Any Department")&&career.equals("Select Any Career")&&!status.equals("Select Any Status"))
+			{
+				temp=camp.fetchViaStatus(status);
+			}
+			return new ModelAndView("show").addObject("every", temp);
 		}
-		else if(regno.equals("")&&!department.equals("Select Any Department")&&career.equals("Select Any Career")&&status.equals("Select Any Status"))
-		{
-			temp=camp.fetchViaDepartment(department);
-			//camp.fetchViaDepartment(department).forEach(temp::add);
-		}
-		else if(regno.equals("")&&department.equals("Select Any Department")&&!career.equals("Select Any Career")&&status.equals("Select Any Status"))
-		{
-			temp=camp.fetchViaCareer(career);
-		}
-		else if(regno.equals("")&&department.equals("Select Any Department")&&career.equals("Select Any Career")&&!status.equals("Select Any Status"))
-		{
-			temp=camp.fetchViaStatus(status);
-		}
-		return new ModelAndView("show").addObject("every", temp);
+		else {return new ModelAndView("index");}
 	}
 	@RequestMapping("/report")
 	public ModelAndView rep(@RequestParam("form") String form)
 	{
-		ModelAndView mod=new ModelAndView("show");
-		System.out.println("Before report calls"+temp);
-		String get=camp.generate(temp, form);
-		mod.addObject("every", temp);
-		mod.addObject("msg", get);
-		System.out.println("Done in report navigate back to show with "+temp);
-		return mod;
+		if(session.getAttribute("user")!=null)
+		{
+			ModelAndView mod=new ModelAndView("show");
+			System.out.println("Before report calls"+temp);
+			String get=camp.generate(temp, form);
+			mod.addObject("every", temp);
+			mod.addObject("msg", get);
+			System.out.println("Done in report navigate back to show with "+temp);
+			return mod;
+		}
+		else {return new ModelAndView("index");}
+	}
+	@RequestMapping("/home")
+	public ModelAndView home()
+	{
+		if(session.getAttribute("user")!=null)
+		{
+			return new ModelAndView("home");
+		}
+		else {return new ModelAndView("index");}
+	}
+	@RequestMapping("/logout")
+	public ModelAndView loggingOut()
+	{
+		session.removeAttribute("user");
+		session.setAttribute("user", null);
+		return new ModelAndView("index").addObject("msg", "Loggedout successfully");
 	}
 }

@@ -7,6 +7,10 @@
 <title>Home of Campus</title>
 </head>
 <body>
+<%response.setHeader("Cache-Control", "no-cache");
+response.setHeader("Cache-Control", "no-store");
+response.setHeader("Pragma", "no-cache");
+response.setDateHeader("Expires", 0); %>
 <h1>Campus Home</h1>
 <h2><a href="add">Enroll New Candidate</a></h2>
 <h2><a href="find">Find Candidates</a></h2>

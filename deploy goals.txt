@@ -1,0 +1,28 @@
+HttpSession
+session
+
+login
+sessionVar=value
+
+enroll: sessionVar!=null
+find:sessionVar!=null
+list:sessionVar!=null
+
+logout:sessionVar=null
+
+
+Back/Referesh
+
+<%response.setHeader("Cache-Control", "no-cache");
+response.setHeader("Cache-Control", "no-store");
+response.setHeader("Pragma", "no-cache");
+response.setDateHeader("Expires", 0); %>
+
+
+
+Deployment:
+
+.war
+
+Maven goals:
+clean package
